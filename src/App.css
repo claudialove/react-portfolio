@@ -4,8 +4,14 @@
   --condiv-flex:6;
   --fontsize-p:1.2rem;
   --fontsize-nav:1.6rem;
+
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+:root {
   --typing-font:3rem;
 }
+
 *
 {
   margin:0;
@@ -22,15 +28,15 @@ body{
 }
 nav
 {
-  padding:60px 30px 0px 30px ;
+  padding:100px 30px 0px 30px ;
   flex:var(--sidebar-flex);
-  background: rgb(238,103,143);
-  background: linear-gradient(180deg, rgba(238,103,143,1) 50%, rgba(132,124,252,1) 80%);
+  background: rgb(241, 174, 194);
+  background: linear-gradient(180deg, rgb(223, 175, 189) 50%, rgb(164, 226, 164) 80%);
 }
 .condiv
 {
-  padding: 100px ;
-  background-color: #f4f5f9;
+  padding: 60px ;
+  background-color: #d3e9d0;
   flex:var(--condiv-flex);
 }
 
@@ -42,16 +48,29 @@ nav
   align-items: center;
   
 }
+
+.name {
+color: #5d5f61;
+font-size: 50px;
+font-weight: bold;
+margin-top:150px;
+margin-bottom: 30px;
+}
+
 .profilepic
 {
   border-radius: 50%;
   width: 200px;
-  margin: 30px;
+
 }
 .typingeffect
 {
   font-size: var(--typing-font);
-  margin-bottom: 30px;
+  font-family: 'Special Elite', cursive;
+  margin-bottom: 700px;
+  margin-top: 50px;
+  font-size: 30px;
+  opacity: 0.7;
 }
 
 nav ul{
@@ -63,7 +82,7 @@ nav ul{
 }
 nav ul li
 {
-  margin:40px;
+  margin:75px;
 }
 
 a
@@ -74,30 +93,32 @@ a
 
 .subtopic
 {
-  margin:10px 10px 30px 10px !important;
+  margin:60px 10px 30px 10px !important;
+  font-weight:bolder; 
 }
 p{
   font-size: var(--fontsize-p);
 }
-h1,h2,h3,h4,p{
+h1,h2,h3,h4,h5,p{
   margin: 10px;
+  font-weight: 400;
 }
 .social
 {
-  position: absolute;
-  margin-top: 20px;
+  position: fixed;
+  margin-left: 89px;
+  margin-top: 5px;
   display: flex;
-  bottom: 60px;
 }
 .social i
 {
   padding-right: 30px;
   font-size: 25px;
-  color: #9a9b9c;
+  color: #5d5f61;
 }
 .social i:hover
 {
-  color: #ffffff;
+  color: #a8a3a3;
 }
 .widecard
 {
@@ -155,10 +176,51 @@ h1,h2,h3,h4,p{
     width: 100vw;
     display: flex;
     justify-content: space-around;
-    bottom: 30px;
+    bottom: 100px;
   }
   .social i
   {
     padding-right: 0px;
   }
 }
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  height: 425px;
+  margin: 1rem;
+  position: relative;
+  width: 300px;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  text-align: left;
+}
+
+.card > .img-container {
+  height: 50%;
+  overflow: hidden;
+  text-align: center;
+  background:#fff;
+}
+.card > .img-container > img {
+  width: 100%
+}
+
+.card > .content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 15px;
+}
+
+.card > .content > ul {
+  list-style-type: none;
+}
+
+.card > .content > ul > li {
+  margin-top: 18px;
+}
+.btn {
+  margin-bottom: 10px;
+}
+
+
+
