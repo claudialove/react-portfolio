@@ -1,6 +1,5 @@
   
 import React, { Component } from 'react'
-import Skillcard from '../components/Skillcard';
 import ReactTypingEffect from 'react-typing-effect';
 
 
