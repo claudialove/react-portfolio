@@ -27,7 +27,6 @@ class Featurecard extends Component {
                     <a href={this.props.href} type="button" target="_blank" className="btn btn-danger">See Application</a>
                 </div>
             </div>
-
         )
     }
 }
