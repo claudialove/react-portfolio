@@ -218,9 +218,10 @@ h1,h2,h3,h4,h5,p{
 .card > .content > ul > li {
   margin-top: 18px;
 }
-.btn {
-  margin-bottom: 10px;
-}
+
+  .btn {
+    margin-bottom: 10px;
+  }
 
 
 

@@ -24,10 +24,7 @@ class Featurecard extends Component {
                             <strong>Technology:</strong> {this.props.technology}
                         </li>
                     </ul>
-                    <Link to={this.props.href}>
-                        <button type="button" className="btn btn-danger">See Application</button>
-                    </Link>
-
+                    <a href={this.props.href} type="button" target="_blank" className="btn btn-danger">See Application</a>
                 </div>
             </div>
 
