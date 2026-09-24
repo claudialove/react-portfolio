@@ -1,5 +1,40 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Development Environment
+
+This project targets a single, reproducible toolchain. Use these exact tools to
+avoid "works on my machine" build failures.
+
+| Tool | Version | Notes |
+| --- | --- | --- |
+| Node.js | `18.x` (pinned to `18.20.4` in [`.nvmrc`](./.nvmrc)) | Node 18 LTS. |
+| npm | `>= 8` | Required by `package-lock.json` (`lockfileVersion: 3`). |
+
+### First-time setup
+
+```bash
+# Use the pinned Node version (requires nvm: https://github.com/nvm-sh/nvm)
+nvm install    # reads .nvmrc
+nvm use        # reads .nvmrc
+
+# Install exactly what the lockfile specifies (reproducible install)
+npm ci
+```
+
+Always commit `package.json` and `package-lock.json` together so the declared
+dependencies and the resolved lockfile stay in sync.
+
+### Windows / OpenSSL note
+
+This app depends on `react-scripts@3.4.1`, which uses an older Webpack that is
+incompatible with the OpenSSL 3 provider bundled in Node 17+. To keep the build
+working on Node 18 we set `NODE_OPTIONS=--openssl-legacy-provider` for the
+`start`, `build`, and `test` scripts.
+
+These scripts use [`cross-env`](https://www.npmjs.com/package/cross-env) so the
+same commands work identically on **Windows, macOS, and Linux** (the previous
+`set NODE_OPTIONS=...` syntax only worked in the Windows shell).
+
 ## Available Scripts
 
 In the project directory, you can run:
