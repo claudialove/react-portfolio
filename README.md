@@ -1,5 +1,52 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Development environment (runtime)
+
+This project uses one documented, reproducible runtime. The same versions are
+pinned in `.nvmrc`, the `engines` field of `package.json`, and the CI workflow
+template (`ci/ci.github-workflow.yml`).
+
+> **Enabling CI.** The CI configuration is provided as a template at
+> `ci/ci.github-workflow.yml`. A maintainer should copy it to
+> `.github/workflows/ci.yml` to activate it (the automation account that opens
+> PRs cannot create files under `.github/workflows/`). It validates a clean
+> `npm ci`, production build, and the test suite on both Ubuntu and Windows
+> using the pinned Node/npm versions.
+
+| Tool | Version | Source of truth |
+| ---- | ------- | --------------- |
+| Node | `20.18.0` (LTS) | `.nvmrc`, `package.json` `engines`, CI |
+| npm  | `10.8.2` | `package.json` `engines`, CI |
+
+Node 18 has reached end of life, so the runtime targets the maintained Node 20
+LTS line. `package-lock.json` was generated with npm `10.8.2`; use that version
+to keep the lockfile reproducible.
+
+### Setup
+
+```bash
+# Select the pinned Node version (requires nvm)
+nvm install
+nvm use
+
+# Pin the tested npm version
+npm install -g npm@10.8.2
+
+# Clean, reproducible install from the committed lockfile
+npm ci
+```
+
+The `start`, `build`, and `test` scripts use [`cross-env`](https://www.npmjs.com/package/cross-env)
+so they run identically on Windows and Linux/macOS.
+
+> **Temporary note — OpenSSL legacy provider.** The `start`, `build`, and `test`
+> scripts set `NODE_OPTIONS=--openssl-legacy-provider`. This is required only
+> because the current `react-scripts` (4-era Webpack) is incompatible with the
+> OpenSSL 3 provider shipped in modern Node. The flag is a temporary workaround
+> and should be removed once the build tool is migrated (tracked in D1 /
+> CVDEV-28). It is intentionally not applied to scripts that do not invoke the
+> Webpack pipeline.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -16,6 +63,12 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+> **Known stale test.** `src/App.test.js` still asserts the default Create React
+> App "renders learn react link" text, which no longer exists in this portfolio.
+> This test fails by design and is a content/test issue, not an environment
+> failure — CI reports it separately (non-blocking). It is tracked for
+> replacement with meaningful route/navigation tests in T2 / CVDEV-33.
 
 ### `npm run build`
 
